@@ -14,6 +14,18 @@
 @media(max-width:850px){.hero-inner,.about-grid{grid-template-columns:1fr;gap:30px}.hero-inner{padding:75px 0}.proof{max-width:570px}.cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.section{padding:65px 0}.nav-links a:not(.nav-button){display:none}.logo{font-size:.84rem}.nav-button{font-size:.69rem}.hero-inner{padding:65px 0}.hero .btn{width:100%}.trust-grid{grid-template-columns:repeat(2,1fr)}.trust-grid>div:nth-child(2){border-right:0}.trust-grid>div:nth-child(-n+2){border-bottom:1px solid var(--line)}.cards,.options,.overview{grid-template-columns:1fr}.wizard{padding:21px 17px}.step{padding-top:30px}.result-content{padding:18px}.result-actions{flex-direction:column}.result-actions .btn{width:100%}.footer-grid{flex-direction:column}.portrait{min-height:300px}h1{font-size:clamp(3.1rem,12vw,4.3rem)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Trilhas personalizadas */
+.paths{padding:75px 0;background:#0a241c;border-block:1px solid var(--line)}
+.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:28px 0}
+.path-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;color:var(--cream);background:linear-gradient(145deg,#14372c,#0a241c);padding:25px;border:1px solid #ffffff25;border-radius:15px;transition:border-color .2s}
+.path-card:hover,.path-card.active{border-color:var(--gold);background:#194335}
+.path-card small{color:var(--gold);text-transform:uppercase;letter-spacing:.12em}
+.path-card strong{font-size:1.1rem}.path-card p{font-size:.78rem;margin:0;flex:1}.path-card b{font-size:.79rem;color:var(--gold);margin-top:10px}
+.path-panel{border:1px solid var(--line);background:#102e25;padding:25px;border-radius:14px}
+.path-panel h3{color:var(--gold);margin:0 0 8px}.path-panel p{font-size:.82rem}
+.path-facts{display:flex;flex-wrap:wrap;gap:10px;margin:17px 0}.path-facts span{padding:9px 12px;border:1px solid #dfba7440;border-radius:8px;font-size:.75rem;background:#dfba740a}
+@media(max-width:700px){.path-grid{grid-template-columns:1fr}.path-panel{padding:18px}}
 </style>
 </head>
 <body>
@@ -29,7 +41,16 @@
 <article class="card"><span class="symbol">⌁</span><h3>Plano personalizado</h3><p>Conteúdos prioritários e frequência sugerida até a próxima prova.</p></article>
 <article class="card"><span class="symbol">✓</span><h3>Teoria aplicada</h3><p>Explicações objetivas, exemplos resolvidos e exercícios progressivos.</p></article>
 </div><div class="price"><div><strong>Investimento nas aulas</strong><p>Valores individuais e pacotes a combinar pelo WhatsApp.</p></div><b id="price"></b></div></div></section>
-<section class="section subjects" id="materias"><div class="wrap"><span class="tag">Áreas de ensino</span><h2>As matérias que você precisa. <em>Do seu jeito.</em></h2><p class="lead">Do reforço dos fundamentos à resolução de problemas universitários, com abordagem adaptada ao seu nível.</p><div class="cards">
+<section class="paths" id="trilhas"><div class="wrap">
+<span class="tag">Escolha sua trilha</span><h2>Uma preparação para <em>cada etapa.</em></h2>
+<p class="lead">Ensino médio, graduação em Exatas ou disciplinas específicas de Engenharia Civil. Selecione a trilha para conhecer as matérias e resultados relacionados.</p>
+<div class="path-grid">
+<button type="button" class="path-card active" data-track="medio" aria-pressed="true"><small>01 · Ensino médio</small><strong>Vestibulares, ENEM e reforço</strong><p>Matemática e Física, do básico à preparação para processos seletivos.</p><b>Conhecer →</b></button>
+<button type="button" class="path-card" data-track="exatas" aria-pressed="false"><small>02 · Graduação</small><strong>Ciências Exatas</strong><p>Cálculo, Física, Álgebra Linear, Geometria Analítica e EDOs.</p><b>Conhecer →</b></button>
+<button type="button" class="path-card" data-track="civil" aria-pressed="false"><small>03 · Graduação</small><strong>Engenharia Civil</strong><p>Estática, Resistência dos Materiais, Análise Estrutural e disciplinas técnicas.</p><b>Conhecer →</b></button>
+</div><div class="path-panel" id="track-panel" aria-live="polite"></div>
+</div></section>
+<section class="section subjects" id="materias"><div class="wrap"><span class="tag">Áreas de ensino</span><h2>As matérias que você precisa. <em>Do seu jeito.</em></h2><p class="lead">Do reforço dos fundamentos à resolução de problemas universitários, com abordagem adaptada ao seu nível.</p><div class="cards" id="subject-cards">
 <article class="card subject"><span class="subject-number">01 / MATEMÁTICA SUPERIOR</span><h3>Cálculo I, II e III</h3><p>Limites, derivadas, integrais, séries, funções de várias variáveis e cálculo vetorial.</p></article>
 <article class="card subject"><span class="subject-number">02 / CIÊNCIAS FÍSICAS</span><h3>Física I, II e III</h3><p>Mecânica, energia, oscilações, eletricidade, magnetismo e ondas.</p></article>
 <article class="card subject"><span class="subject-number">03 / ÁLGEBRA</span><h3>Álgebra Linear</h3><p>Matrizes, sistemas lineares, espaços vetoriais e autovalores.</p></article>
@@ -71,10 +92,38 @@ const subjects={
 "Matemática para vestibular/ENEM":["Matemática básica","Frações e porcentagem","Equações","Funções","Geometria plana","Geometria espacial","Trigonometria","Probabilidade e estatística"],
 "Física para vestibular/ENEM":["Cinemática","Dinâmica","Trabalho e energia","Hidrostática","Termologia","Ondulatória","Óptica","Eletricidade","Magnetismo"]
 };
+
+const civilSubjects={
+"Estática (Mecânica Geral I)":["Forças e momentos","Diagramas de corpo livre","Equilíbrio de partículas","Equilíbrio de corpos rígidos","Treliças","Pórticos","Centroides e inércia"],
+"Resistência dos Materiais I":["Tensão e deformação","Esforços internos","Tração e compressão","Torção","Flexão","Cortante e momento fletor","Deformações"],
+"Resistência dos Materiais II":["Tensões combinadas","Círculo de Mohr","Transformação de tensões","Flambagem","Deflexões","Energia de deformação"],
+"Análise Estrutural I":["Vínculos","Estruturas isostáticas","Treliças","Vigas e pórticos","Diagramas de esforços","Deslocamentos","Linhas de influência"],
+"Fundações":["Sondagens","Capacidade de carga","Fundações superficiais","Fundações profundas","Recalques"],
+"Mecânica dos Solos":["Índices físicos","Granulometria","Limites de Atterberg","Compactação","Tensões","Adensamento","Resistência ao cisalhamento"],
+"Mecânica dos Fluidos e Hidráulica":["Hidrostática","Bernoulli","Continuidade","Perdas de carga","Escoamentos em tubulações"],
+"Métodos Numéricos Aplicados":["Raízes de equações","Sistemas lineares","Interpolação","Integração numérica","Métodos para EDOs"]
+};
+Object.assign(subjects,civilSubjects);
+const trackSubjects={
+medio:["Matemática para vestibular/ENEM","Física para vestibular/ENEM"],
+exatas:["Cálculo I","Cálculo II","Cálculo III","Física I","Física II","Física III","Álgebra Linear","Geometria Analítica","Equações Diferenciais"],
+civil:[...Object.keys(civilSubjects),"Cálculo I","Cálculo II","Equações Diferenciais"]
+};
+const trackInfo={
+medio:{title:"Ensino médio e vestibulares",description:"Aulas voltadas aos fundamentos e às estratégias de resolução para provas escolares, ENEM e vestibulares.",facts:["2º colocado · Engenharia Civil UTFPR","4º colocado · Engenharia Civil UFPR","Mais jovem do Brasil na ESA em 2023 (conforme informado)","Menção honrosa na OBM 2022","Experiência em olimpíadas de matemática, incluindo OBMEP"]},
+exatas:{title:"Graduação · Exatas",description:"Conteúdo universitário aliado à experiência como monitor de Cálculo I na UTFPR.",facts:["10,0 · Cálculo I e II","10,0 · Geometria Analítica","10,0 · Álgebra Linear","10,0 · Equações Diferenciais","10,0 · Física Teórica I","9,8 · Física Teórica II e III","Coeficiente 0,9557"]},
+civil:{title:"Graduação · Engenharia Civil",description:"Estudo aplicado à mecânica, análise de estruturas, geotecnia e resolução de problemas técnicos.",facts:["10,0 · Estática","10,0 · Resistência dos Materiais I e II","10,0 · Análise Estrutural I","10,0 · Fundações","10,0 · Métodos Numéricos Aplicados","10,0 · Sistemas Hidráulicos Urbanos","9,7 · Mecânica dos Fluidos e Transferência de Calor"]}
+};
+const trackCards={
+medio:[["Matemática para vestibular/ENEM","Funções, geometria, probabilidade e interpretação de questões."],["Física para vestibular/ENEM","Mecânica, ondas, óptica e eletricidade."]],
+exatas:[["Cálculo I, II e III","Limites, derivadas, integrais, séries e cálculo multivariável."],["Física I, II e III","Mecânica, termodinâmica, oscilações e eletromagnetismo."],["Álgebra Linear","Matrizes, espaços vetoriais e autovalores."],["Geometria Analítica","Vetores, retas, planos e cônicas."],["Equações Diferenciais","EDOs, métodos de resolução e aplicações."]],
+civil:[["Estática (Mecânica Geral I)","Equilíbrio de forças, momentos, treliças e pórticos."],["Resistência dos Materiais I e II","Tensões, deformações, flexão e flambagem."],["Análise Estrutural I","Estruturas isostáticas, esforços e deslocamentos."],["Fundações","Capacidade de carga, recalques e investigação."],["Mecânica dos Solos","Caracterização, compactação e adensamento."],["Mecânica dos Fluidos e Hidráulica","Hidrostática, escoamentos e perdas de carga."],["Métodos Numéricos","Métodos aproximados e aplicações computacionais."]]
+};
+let activeTrack="medio";
 const goals=["Preparação para prova final","Recuperação de nota","Acompanhamento contínuo","Preparação para vestibular/ENEM","Reforçar minha base"];
 const styles=["Explicação passo a passo","Muitos exercícios","Revisão da teoria","Resolução de provas antigas"];
 const slots=["Segunda a sexta — manhã","Segunda a sexta — tarde","Segunda a sexta — noite","Sábado — manhã","Sábado — tarde","Domingo — manhã","Domingo — tarde","Horários flexíveis"];
-const state={name:"",level:"",course:"",subject:"",topics:[],other:"",goal:"",date:"",style:"",slots:[],notes:""};
+const state={name:"",level:"",branch:"",course:"",subject:"",topics:[],other:"",goal:"",date:"",style:"",slots:[],notes:""};
 let stepIndex=0,finalMessage="";
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -85,8 +134,8 @@ function dateBR(s){if(!s)return "Não informada";const [y,m,d]=s.split("-");retu
 function template(title,desc,body){return '<div class="tag">Seu diagnóstico</div><h3>'+title+'</h3><p>'+desc+'</p>'+body}
 function markup(n){switch(n){
 case 0:return template("Como posso te chamar?","Seu nome será usado no plano de estudos.",'<label class="field" for="name">Seu nome</label><input class="input" id="name" autocomplete="name" maxlength="90" placeholder="Ex.: Ana Carolina" value="'+esc(state.name)+'">');
-case 1:return template("Em qual nível você está estudando?","Ajustarei a profundidade dos exercícios.",choices(["Ensino médio","Graduação"],"level",state.level)+'<div id="course-wrap" '+(state.level==="Graduação"?"":"hidden")+'><label class="field" for="course">Qual é seu curso?</label><input class="input" id="course" maxlength="120" placeholder="Ex.: Engenharia Civil" value="'+esc(state.course)+'"></div>');
-case 2:return template("Qual matéria é sua prioridade?","Escolha a disciplina em que mais precisa de ajuda.",choices(Object.keys(subjects),"subject",state.subject));
+case 1:return template("Em qual nível você está estudando?","Para graduação, selecione também a área para personalizar as disciplinas.",choices(["Ensino médio","Graduação"],"level",state.level)+'<div id="course-wrap" '+(state.level==="Graduação"?"":"hidden")+'><label class="field">Qual área da graduação?</label>'+choices(["Ciências Exatas","Engenharia Civil"],"branch",state.branch)+'<label class="field" for="course">Qual é seu curso?</label><input class="input" id="course" maxlength="120" placeholder="Ex.: Engenharia Civil" value="'+esc(state.course)+'"></div>');
+case 2:return template("Qual matéria é sua prioridade?","Escolha a disciplina em que mais precisa de ajuda.",choices(trackSubjects[state.level==="Ensino médio"?"medio":state.branch==="Engenharia Civil"?"civil":"exatas"],"subject",state.subject));
 case 3:return template("Quais tópicos parecem mais difíceis?","Marque quantos precisar ou descreva outro assunto.",choices(subjects[state.subject]||[],"topics",state.topics,true)+'<label class="field" for="other">Outro assunto (opcional)</label><input class="input" id="other" maxlength="250" placeholder="Ex.: regra da cadeia" value="'+esc(state.other)+'">');
 case 4:return template("O que você quer alcançar?","Seu objetivo ajuda a definir as prioridades.",choices(goals,"goal",state.goal));
 case 5:return template("Quando é sua próxima prova?","Se ainda não tiver data, pode deixar em branco.",'<label class="field" for="date">Data da avaliação</label><input class="input" id="date" type="date" min="'+isoToday()+'" value="'+esc(state.date)+'">');
@@ -96,8 +145,8 @@ case 8:return template("Algo mais que eu deveria saber?","Conte sobre suas dific
 }}
 function render(){const pct=Math.round((stepIndex+1)/9*100);$("step-label").textContent="ETAPA "+String(stepIndex+1).padStart(2,"0")+" DE 09";$("percent").textContent=pct+"%";$("fill").style.width=pct+"%";$("track").setAttribute("aria-valuenow",pct);$("step").innerHTML=markup(stepIndex);$("back").style.visibility=stepIndex===0?"hidden":"visible";$("next").textContent=stepIndex===8?"Gerar meu plano →":"Continuar →";$("error").style.display="none";if(stepIndex===1)document.querySelectorAll('input[name="level"]').forEach(el=>el.addEventListener("change",()=>{$("course-wrap").hidden=el.value!=="Graduação"}))}
 function selected(name,multi=false){const elements=[...document.querySelectorAll('input[name="'+name+'"]:checked')];return multi?elements.map(x=>x.value):(elements[0]?.value||"")}
-function save(){switch(stepIndex){case 0:state.name=$("name").value.trim();break;case 1:state.level=selected("level");state.course=state.level==="Graduação"?$("course").value.trim():"";break;case 2:{const subject=selected("subject");if(subject!==state.subject)state.topics=[];state.subject=subject;break}case 3:state.topics=selected("topics",true);state.other=$("other").value.trim();break;case 4:state.goal=selected("goal");break;case 5:state.date=$("date").value;break;case 6:state.style=selected("style");break;case 7:state.slots=selected("slots",true);break;case 8:state.notes=$("notes").value.trim();break}}
-function error(){switch(stepIndex){case 0:return state.name.length<2?"Informe seu nome com pelo menos dois caracteres.":"";case 1:return !state.level?"Escolha seu nível de ensino.":state.level==="Graduação"&&!state.course?"Informe seu curso de graduação.":"";case 2:return state.subject?"":"Escolha uma matéria.";case 3:return state.topics.length||state.other?"":"Marque um tópico ou descreva sua dificuldade.";case 4:return state.goal?"":"Escolha seu objetivo.";case 5:return state.date&&datesDelta(state.date)<0?"A data da prova não pode estar no passado.":"";case 6:return state.style?"":"Escolha sua forma de aprendizado.";case 7:return state.slots.length?"":"Marque pelo menos um horário.";default:return ""}}
+function save(){switch(stepIndex){case 0:state.name=$("name").value.trim();break;case 1:{const prev=state.level+"|"+state.branch;state.level=selected("level");state.branch=state.level==="Graduação"?selected("branch"):"";state.course=state.level==="Graduação"?$("course").value.trim():"";if(prev!==state.level+"|"+state.branch){state.subject="";state.topics=[];state.other=""}break;}case 2:{const subject=selected("subject");if(subject!==state.subject)state.topics=[];state.subject=subject;break}case 3:state.topics=selected("topics",true);state.other=$("other").value.trim();break;case 4:state.goal=selected("goal");break;case 5:state.date=$("date").value;break;case 6:state.style=selected("style");break;case 7:state.slots=selected("slots",true);break;case 8:state.notes=$("notes").value.trim();break}}
+function error(){switch(stepIndex){case 0:return state.name.length<2?"Informe seu nome com pelo menos dois caracteres.":"";case 1:return !state.level?"Escolha seu nível de ensino.":state.level==="Graduação"&&!state.branch?"Escolha a área da graduação.":state.level==="Graduação"&&!state.course?"Informe seu curso de graduação.":"";case 2:return state.subject?"":"Escolha uma matéria.";case 3:return state.topics.length||state.other?"":"Marque um tópico ou descreva sua dificuldade.";case 4:return state.goal?"":"Escolha seu objetivo.";case 5:return state.date&&datesDelta(state.date)<0?"A data da prova não pode estar no passado.":"";case 6:return state.style?"":"Escolha sua forma de aprendizado.";case 7:return state.slots.length?"":"Marque pelo menos um horário.";default:return ""}}
 $("form").addEventListener("submit",e=>{e.preventDefault();save();const msg=error();if(msg){$("error").textContent=msg;$("error").style.display="block";return}if(stepIndex<8){stepIndex++;render()}else generate()});
 $("back").addEventListener("click",()=>{if(stepIndex){save();stepIndex--;render()}});
 function createPlan(){const topics=[...new Set([...state.topics,...(state.other?[state.other]:[])])];const days=datesDelta(state.date);const weeks=days===null?null:Math.ceil(days/7);const examFocus=/prova|recuperação|vestibular/i.test(state.goal);let count=topics.length>=5?2:1,frequency;
@@ -118,13 +167,25 @@ const lessons=urgent?[
 ["Desenvolvimento dos conteúdos","Aprofundamento de "+b+" com exemplos e exercícios de dificuldade progressiva."],
 ["Aplicação e consolidação",c?"Trabalhar "+c+" e relacionar os conceitos estudados.":"Praticar questões mais complexas e revisar os erros recorrentes."]
 ];
-return{topics,days,weeks,count,frequency,strategy,lessons,level:state.level==="Graduação"?"Graduação em "+state.course:"Ensino médio",difficulty:"As principais dificuldades informadas são: "+topics.join(", ")+". Estes tópicos orientarão o primeiro encontro. A sequência final será ajustada após analisar as listas e provas do aluno."}}
+return{topics,days,weeks,count,frequency,strategy,lessons,level:state.level==="Graduação"?"Graduação em "+state.course+" · "+state.branch:"Ensino médio",difficulty:"As principais dificuldades informadas são: "+topics.join(", ")+". Estes tópicos orientarão o primeiro encontro. A sequência final será ajustada após analisar as listas e provas do aluno."}}
 function metric(label,value){return '<div class="metric"><small>'+esc(label)+'</small><strong>'+esc(value)+'</strong></div>'}
 function createMessage(p){return ["Olá, Gustavo! Tudo bem?","Preenchi o diagnóstico no seu portal e gostaria de conversar sobre aulas particulares.","","📋 *MEU DIAGNÓSTICO*","*Nome:* "+state.name,"*Nível:* "+p.level,"*Matéria:* "+state.subject,"*Objetivo:* "+state.goal,"*Próxima prova:* "+dateBR(state.date),"*Preferência de aprendizado:* "+state.style,"","*Tópicos com dificuldade:*",p.topics.map(t=>"• "+t).join("\n"),"","*Disponibilidade (horário de Brasília):*",state.slots.join("\n"),"*Observações:* "+(state.notes||"Nenhuma"),"","📚 *PLANO DE ESTUDOS SUGERIDO*","*Dificuldades:* "+p.difficulty,"","*Primeiras aulas:*",p.lessons.map((x,i)=>(i+1)+". "+x[0]+": "+x[1]).join("\n"),"","*Estratégia:* "+p.strategy,"*Frequência:* "+p.frequency,"","Sei que o plano é uma proposta inicial e pode ser ajustado após uma avaliação. Gostaria de verificar horários e valores. Obrigado!"].join("\n")}
 function generate(){const p=createPlan();$("overview").innerHTML=metric("Aluno",state.name)+metric("Nível",p.level)+metric("Matéria",state.subject)+metric("Objetivo",state.goal)+metric("Próxima prova",dateBR(state.date))+metric("Frequência inicial",p.count+" aula(s)/semana");$("difficulty").textContent=p.difficulty;$("lessons").innerHTML=p.lessons.map((x,i)=>'<div class="lesson"><span class="lesson-number">0'+(i+1)+'</span><div><strong>'+esc(x[0])+'</strong><p>'+esc(x[1])+'</p></div></div>').join("");$("strategy").textContent=p.strategy;$("frequency").textContent=p.frequency+" A duração de cada encontro é de 1 hora. Frequência e horários dependem de confirmação.";finalMessage=createMessage(p);$("wizard").hidden=true;$("intro").hidden=true;$("result").classList.add("show");$("diagnostico").scrollIntoView({behavior:"smooth"})}
 $("send").addEventListener("click",()=>{if(finalMessage)window.location.href="https://wa.me/"+CONFIG.whatsapp+"?text="+encodeURIComponent(finalMessage)});
 $("copy").addEventListener("click",async()=>{try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(finalMessage)}else{const t=document.createElement("textarea");t.value=finalMessage;t.style.position="fixed";t.style.left="-9999px";document.body.appendChild(t);t.select();if(!document.execCommand("copy"))throw Error("copy");t.remove()}$("feedback").textContent="✓ Diagnóstico copiado."}catch(e){$("feedback").textContent="Não foi possível copiar. Use o botão do WhatsApp."}});
-$("restart").addEventListener("click",()=>{Object.assign(state,{name:"",level:"",course:"",subject:"",topics:[],other:"",goal:"",date:"",style:"",slots:[],notes:""});stepIndex=0;finalMessage="";$("result").classList.remove("show");$("wizard").hidden=false;$("intro").hidden=false;$("feedback").textContent="";render();$("diagnostico").scrollIntoView({behavior:"smooth"})});
+$("restart").addEventListener("click",()=>{Object.assign(state,{name:"",level:"",branch:"",course:"",subject:"",topics:[],other:"",goal:"",date:"",style:"",slots:[],notes:""});stepIndex=0;finalMessage="";$("result").classList.remove("show");$("wizard").hidden=false;$("intro").hidden=false;$("feedback").textContent="";render();$("diagnostico").scrollIntoView({behavior:"smooth"})});
+
+function showTrack(track){
+ activeTrack=track;
+ const info=trackInfo[track];
+ document.querySelectorAll("[data-track]").forEach(btn=>{const selected=btn.dataset.track===track;btn.classList.toggle("active",selected);btn.setAttribute("aria-pressed",String(selected))});
+ $("track-panel").innerHTML='<h3>'+esc(info.title)+'</h3><p>'+esc(info.description)+'</p><div class="path-facts">'+info.facts.map(f=>'<span>✓ '+esc(f)+'</span>').join("")+'</div><p><strong>Matérias:</strong> '+esc(trackSubjects[track].join(" · "))+'</p><button type="button" class="btn" id="start-track">Quero meu plano desta trilha →</button>';
+ $("subject-cards").innerHTML=trackCards[track].map((item,i)=>'<article class="card subject"><span class="subject-number">'+String(i+1).padStart(2,"0")+' / '+esc(info.title.toUpperCase())+'</span><h3>'+esc(item[0])+'</h3><p>'+esc(item[1])+'</p></article>').join("");
+ $("start-track").addEventListener("click",()=>{state.level=track==="medio"?"Ensino médio":"Graduação";state.branch=track==="civil"?"Engenharia Civil":track==="exatas"?"Ciências Exatas":"";state.subject="";state.topics=[];state.other="";stepIndex=0;render();$("diagnostico").scrollIntoView({behavior:"smooth"})});
+}
+document.querySelectorAll("[data-track]").forEach(btn=>btn.addEventListener("click",()=>showTrack(btn.dataset.track)));
+showTrack("medio");
+
 render();
 </script>
 </body>
