@@ -26,12 +26,44 @@
 .path-panel h3{color:var(--gold);margin:0 0 8px}.path-panel p{font-size:.82rem}
 .path-facts{display:flex;flex-wrap:wrap;gap:10px;margin:17px 0}.path-facts span{padding:9px 12px;border:1px solid #dfba7440;border-radius:8px;font-size:.75rem;background:#dfba740a}
 @media(max-width:700px){.path-grid{grid-template-columns:1fr}.path-panel{padding:18px}}
+
+/* Painel editorial de credenciais: SVG e CSS nativos, sem arquivos externos */
+.showcase{padding:94px 0;background:radial-gradient(ellipse at 82% 5%,#23634745,transparent 45%),linear-gradient(150deg,#061914,#0b2d22 65%,#041610);border-block:1px solid var(--line);position:relative;isolation:isolate;overflow:hidden}
+.showcase:before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(#dfba740b 1px,transparent 1px),linear-gradient(90deg,#dfba740b 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(90deg,transparent 6%,black 90%)}
+.showcase-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:27px}
+.showcase-head h2{max-width:650px;margin-bottom:0}.showcase-head p{max-width:380px;font-size:.82rem;margin:0}
+.showcase-art{position:relative;border:1px solid #dfba7459;border-radius:22px;background:linear-gradient(155deg,#153d2e 0%,#09261d 53%,#061b15 100%);overflow:hidden;box-shadow:0 20px 75px #0004}
+.showcase-art:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 75% 22%,#dfba741c,transparent 35%)}
+.showcase-art-top{position:relative;display:grid;grid-template-columns:1.15fr .85fr;min-height:238px;border-bottom:1px solid var(--line)}
+.showcase-art-copy{padding:36px 40px;z-index:1}
+.showcase-art-copy small{color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.68rem}
+.showcase-art-copy h3{font:400 clamp(2rem,4vw,3.25rem)/1.17 "DM Serif Display",Georgia,serif;letter-spacing:-.025em;margin:12px 0;color:var(--cream)}
+.showcase-art-copy h3 em{color:var(--gold);font-style:normal}
+.showcase-art-copy p{font-size:.81rem;max-width:480px;margin:0}
+.showcase-art-price{display:inline-flex;align-items:baseline;flex-wrap:wrap;gap:8px;padding-top:16px;color:var(--gold);font-weight:700}
+.showcase-art-price b{font-size:1.8rem;font-family:"DM Serif Display",Georgia,serif;font-weight:400}
+.showcase-structure{position:absolute;right:0;bottom:0;width:44%;height:100%;pointer-events:none;opacity:.78}
+.showcase-structure svg{width:100%;height:100%}
+.achievement-grid{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.achievement{padding:28px 29px 30px;border-right:1px solid var(--line)}
+.achievement:last-child{border-right:0}
+.achievement-icon{display:flex;align-items:center;gap:11px;margin-bottom:17px}
+.achievement-icon span{display:grid;place-items:center;flex-shrink:0;width:38px;height:38px;border:1px solid #dfba7463;border-radius:10px;color:var(--gold);font-size:1.16rem}
+.achievement-icon h3{font-size:.94rem;margin:0;color:var(--gold);font-weight:600;line-height:1.4}
+.achievement ul{margin:0;padding:0;list-style:none;display:grid;gap:13px}
+.achievement li{position:relative;font-size:.77rem;line-height:1.8;padding-left:16px;color:#e1e8df}
+.achievement li:before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.achievement li strong{font-weight:600;color:var(--cream)}
+.showcase-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:18px 27px;background:#dfba740b;border-top:1px solid var(--line)}
+.showcase-bottom p{margin:0;font-size:.76rem}.showcase-bottom .btn{padding:12px 18px}
+@media(max-width:820px){.achievement-grid{grid-template-columns:1fr}.achievement{border-right:0;border-bottom:1px solid var(--line);padding:23px}.achievement:last-child{border:0}.showcase-head{display:block}.showcase-head p{margin-top:12px}.showcase-art-copy{padding:25px}.showcase-structure{width:65%;opacity:.24}}
+@media(max-width:620px){.showcase{padding:65px 0}.showcase-art-top{grid-template-columns:1fr;min-height:255px}.showcase-art-copy{padding:25px 23px}.showcase-art-copy h3{font-size:2.15rem}.showcase-bottom{padding:20px}.showcase-bottom .btn{width:100%}}
 </style>
 </head>
 <body>
 <header class="header"><div class="wrap nav"><a class="logo" href="#inicio">GUSTAVO<span>.</span>SCHLICHTA</a><nav class="nav-links" aria-label="Navegação"><a href="#metodo">O método</a><a href="#materias">Matérias</a><a href="#sobre">Sobre mim</a><a class="nav-button" href="#diagnostico">Montar meu plano ↗</a></nav></div></header>
 <main>
-<section class="hero" id="inicio"><div class="wrap hero-inner"><div><span class="pill">AULAS ONLINE · ENSINO MÉDIO E SUPERIOR</span><h1>Aulas<br>Particulares<br>de <em>Exatas.</em></h1><p>Aprenda Cálculo, Física e Matemática com quem <strong>conquistou nota 10 nas disciplinas mais exigentes da Engenharia.</strong> Aulas práticas, explicações claras e um plano de estudos construído para suas dificuldades.</p><a class="btn" href="#diagnostico">Quero meu plano de estudos →</a><p class="signature">Com <strong>Gustavo Schlichta</strong> · Engenharia Civil UTFPR</p></div><aside class="proof"><small>Desempenho acadêmico</small><div class="giant">10,0</div><p>Em Cálculo I e II, Álgebra Linear, Geometria Analítica, Equações Diferenciais e Física Teórica I.</p><div class="proofline"><b>01</b><span>1º colocado do curso · Coeficiente 0,9557</span></div><div class="proofline"><b>∑</b><span>Monitor de Cálculo I · UTFPR</span></div><div class="proofline"><b>JP</b><span>Intercâmbio no Shibaura Institute of Technology</span></div></aside></div></section>
+<section class="hero" id="inicio"><div class="wrap hero-inner"><div><span class="pill">AULAS ONLINE · ENSINO MÉDIO E SUPERIOR</span><h1>Aulas<br>Particulares<br>de <em>Exatas.</em></h1><p>Aprenda Cálculo, Física e Matemática com quem <strong>conquistou nota 10 nas disciplinas mais exigentes da Engenharia.</strong> Aulas práticas, explicações claras e um plano de estudos construído para suas dificuldades.</p><a class="btn" href="#diagnostico">Quero meu plano de estudos →</a><p class="signature" style="color:var(--gold);font-weight:700;margin:15px 0 0">Aulas individuais a partir de R$ 60/hora</p><p class="signature">Com <strong>Gustavo Schlichta</strong> · Engenharia Civil UTFPR</p></div><aside class="proof"><small>Desempenho acadêmico</small><div class="giant">10,0</div><p>Em Cálculo I e II, Álgebra Linear, Geometria Analítica, Equações Diferenciais e Física Teórica I.</p><div class="proofline"><b>01</b><span>1º colocado do curso · Coeficiente 0,9557</span></div><div class="proofline"><b>∑</b><span>Monitor de Cálculo I · UTFPR</span></div><div class="proofline"><b>JP</b><span>Intercâmbio no Shibaura Institute of Technology</span></div></aside></div></section>
 <section class="trust"><div class="wrap trust-grid"><div><strong>100% online</strong><span>Aulas ao vivo</span></div><div><strong>1 hora</strong><span>Por encontro</span></div><div><strong>Individual</strong><span>Plano personalizado</span></div><div><strong>Do básico ao avançado</strong><span>Ensino médio e superior</span></div></div></section>
 <section class="section" id="metodo"><div class="wrap"><span class="tag">O método</span><h2>Não é apenas assistir.<br>É <em>entender de verdade.</em></h2><p class="lead">Cada aluno tem uma base, um ritmo e um objetivo diferentes. As aulas são planejadas a partir do que você realmente precisa aprender.</p><div class="cards">
 <article class="card"><span class="symbol">◷</span><h3>Online e ao vivo</h3><p>Encontros individuais de 1 hora, com explicações em tempo real e espaço para perguntas.</p></article>
@@ -58,6 +90,70 @@
 <article class="card subject"><span class="subject-number">05 / MATEMÁTICA APLICADA</span><h3>Equações Diferenciais</h3><p>EDOs de primeira e segunda ordem e métodos de resolução.</p></article>
 <article class="card subject"><span class="subject-number">06 / ENSINO MÉDIO</span><h3>Vestibular e ENEM</h3><p>Matemática e Física para ensino médio com revisão e exercícios.</p></article>
 </div></div></section>
+
+<!-- Vitrine de resultados acadêmicos: elementos editáveis e responsivos -->
+<section class="showcase" id="resultados">
+<div class="wrap">
+<div class="showcase-head">
+<div><span class="tag">Resultados e trajetória</span><h2>Excelência acadêmica <em>aplicada ao seu aprendizado.</em></h2></div>
+<p>Três caminhos de aprendizagem. Uma metodologia individualizada, com resultados que demonstram dedicação às Exatas e à Engenharia.</p>
+</div>
+<div class="showcase-art">
+<div class="showcase-art-top">
+<div class="showcase-art-copy">
+<small>Gustavo Schlichta · UTFPR · SIT Japão</small>
+<h3>Conhecimento que vira <em>resultado.</em></h3>
+<p>Da preparação para vestibulares às disciplinas universitárias, aulas com atenção às suas dificuldades.</p>
+<div class="showcase-art-price">Aulas online <b>a partir de R$ 60/hora</b></div>
+</div>
+<div class="showcase-structure" aria-hidden="true">
+<svg viewBox="0 0 470 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g stroke="#E6C47F" stroke-width="1.35" opacity=".85">
+<path d="M6 239H465M36 239V91H445V239M91 91V239M160 91V239M229 91V239M298 91V239M367 91V239M436 91V239M36 91L91 239L160 91L229 239L298 91L367 239L436 91"/>
+<path d="M22 86H449M22 86L91 24L160 86L229 24L298 86L367 24L449 86M91 24V86M229 24V86M367 24V86"/>
+<path d="M10 254H465M20 246H460" opacity=".5"/>
+</g>
+<g stroke="#E6C47F" opacity=".32">
+<path d="M0 45H470M0 135H470M0 180H470M60 0V265M130 0V265M200 0V265M270 0V265M340 0V265M410 0V265" stroke-dasharray="3 7"/>
+</g></svg>
+</div>
+</div>
+<div class="achievement-grid">
+<article class="achievement">
+<div class="achievement-icon"><span aria-hidden="true">⌑</span><h3>Ensino Médio<br>e vestibulares</h3></div>
+<ul>
+<li><strong>2º colocado</strong> em Engenharia Civil na UTFPR</li>
+<li><strong>4º colocado</strong> em Engenharia Civil na UFPR</li>
+<li><strong>Aprovado na ESA</strong> em 2023</li>
+<li>Menção honrosa na <strong>OBM 2022</strong></li>
+</ul>
+</article>
+<article class="achievement">
+<div class="achievement-icon"><span aria-hidden="true">∑</span><h3>Graduação<br>Exatas</h3></div>
+<ul>
+<li><strong>1º colocado do curso</strong> · coeficiente 0,9557</li>
+<li>Monitor de <strong>Cálculo I</strong> na UTFPR</li>
+<li><strong>10,0</strong> em Cálculo I e II</li>
+<li><strong>10,0</strong> em Geometria Analítica, Álgebra Linear e Equações Diferenciais</li>
+<li><strong>10,0</strong> em Física Teórica I</li>
+</ul>
+</article>
+<article class="achievement">
+<div class="achievement-icon"><span aria-hidden="true">△</span><h3>Graduação<br>Engenharia Civil</h3></div>
+<ul>
+<li><strong>10,0</strong> em Estática</li>
+<li><strong>10,0</strong> em Resistência dos Materiais I e II</li>
+<li><strong>10,0</strong> em Análise Estrutural I e Fundações</li>
+<li><strong>10,0</strong> em Métodos Numéricos Aplicados</li>
+<li>Intercâmbio acadêmico na <strong>Shibaura Institute of Technology</strong>, Japão</li>
+</ul>
+</article>
+</div>
+<div class="showcase-bottom"><p>Explore as disciplinas e receba uma primeira sugestão de estudo.</p><a class="btn" href="#diagnostico">Quero meu plano de estudos →</a></div>
+</div>
+</div>
+</section>
+
 <section class="section" id="sobre"><div class="wrap about-grid"><div class="portrait"><div class="monogram">GS.</div><h3>Gustavo Schlichta</h3><p>Engenharia Civil · UTFPR<br>Intercâmbio acadêmico · Japão</p></div><div><span class="tag">Quem dá a aula</span><h2>Ensino baseado em <em>experiência e resultados.</em></h2><p>Sou estudante de Engenharia Civil da UTFPR, atualmente no 7º período e em intercâmbio acadêmico no Shibaura Institute of Technology, no Japão. Minha proposta é ajudar você a compreender a lógica dos exercícios, em vez de apenas memorizar fórmulas.</p><div class="credentials">
 <div><span class="tick">✓</span><span>Engenharia Civil na UTFPR — 7º período.</span></div>
 <div><span class="tick">✓</span><span>Intercâmbio acadêmico no Shibaura Institute of Technology, Japão.</span></div>
@@ -76,7 +172,7 @@
 "use strict";
 // WHATSAPP: troque o número abaixo, somente com dígitos e código do país.
 // PREÇOS: substitua o texto abaixo pelo preço ou faixa de preços.
-const CONFIG={whatsapp:"5541996774890",price:"[VALOR A DEFINIR]",timezone:"America/Sao_Paulo"};
+const CONFIG={whatsapp:"5541996774890",price:"A partir de R$ 60/hora",timezone:"America/Sao_Paulo"};
 document.getElementById("price").textContent=CONFIG.price;
 document.getElementById("year").textContent=new Date().getFullYear();
 const subjects={
@@ -110,7 +206,7 @@ exatas:["Cálculo I","Cálculo II","Cálculo III","Física I","Física II","Fís
 civil:[...Object.keys(civilSubjects),"Cálculo I","Cálculo II","Equações Diferenciais"]
 };
 const trackInfo={
-medio:{title:"Ensino médio e vestibulares",description:"Aulas voltadas aos fundamentos e às estratégias de resolução para provas escolares, ENEM e vestibulares.",facts:["2º colocado · Engenharia Civil UTFPR","4º colocado · Engenharia Civil UFPR","Mais jovem do Brasil na ESA em 2023 (conforme informado)","Menção honrosa na OBM 2022","Experiência em olimpíadas de matemática, incluindo OBMEP"]},
+medio:{title:"Ensino médio e vestibulares",description:"Aulas voltadas aos fundamentos e às estratégias de resolução para provas escolares, ENEM e vestibulares.",facts:["2º colocado · Engenharia Civil UTFPR","4º colocado · Engenharia Civil UFPR","Aprovado na ESA em 2023","Menção honrosa na OBM 2022","Experiência em olimpíadas de matemática, incluindo OBMEP"]},
 exatas:{title:"Graduação · Exatas",description:"Conteúdo universitário aliado à experiência como monitor de Cálculo I na UTFPR.",facts:["10,0 · Cálculo I e II","10,0 · Geometria Analítica","10,0 · Álgebra Linear","10,0 · Equações Diferenciais","10,0 · Física Teórica I","9,8 · Física Teórica II e III","Coeficiente 0,9557"]},
 civil:{title:"Graduação · Engenharia Civil",description:"Estudo aplicado à mecânica, análise de estruturas, geotecnia e resolução de problemas técnicos.",facts:["10,0 · Estática","10,0 · Resistência dos Materiais I e II","10,0 · Análise Estrutural I","10,0 · Fundações","10,0 · Métodos Numéricos Aplicados","10,0 · Sistemas Hidráulicos Urbanos","9,7 · Mecânica dos Fluidos e Transferência de Calor"]}
 };
