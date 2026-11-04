@@ -72,21 +72,65 @@
 \n/* Retrato profissional: recorte centralizado e responsivo */\n.portrait-photo{object-position:center center;image-rendering:auto;object-fit:cover}\n
 /* Foto vertical da seção Sobre mim, sem recorte circular */
 .portrait .portrait-photo{width:min(210px,74%);height:auto;aspect-ratio:456/635;object-fit:contain;object-position:center;border-radius:15px;border:2px solid var(--gold);box-shadow:0 0 0 7px #dfba7412,0 16px 35px #0006}
+
+/* Novos componentes comerciais e institucionais */
+body{font-size:16px}
+.hero-cta-group{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.price-details{display:flex;flex-direction:column;gap:6px;min-width:230px}
+.price-details .monthly{font-size:.9rem;color:var(--cream)}
+.price-details .monthly b{color:var(--gold)}
+.price-details .payment{font-size:.84rem;color:var(--mute);margin:0}
+.first-lesson{display:flex;gap:16px;align-items:flex-start;margin-top:16px;padding:22px 24px;border:1px solid #dfba7455;border-radius:14px;background:#dfba740c}
+.first-lesson .seal{display:grid;place-items:center;width:42px;height:42px;flex-shrink:0;border:1px solid var(--line);border-radius:11px;color:var(--gold);font-size:1.3rem}
+.first-lesson h3{font-size:1.03rem;color:var(--gold);margin:0 0 5px}
+.first-lesson p{font-size:.88rem;line-height:1.9;margin:0}
+.testimonials{background:#071e18;border-block:1px solid var(--line)}
+.testimonial-card{display:flex;flex-direction:column;gap:14px}
+.testimonial-card h3{color:var(--gold);font-size:.94rem;margin:0}
+.testimonial-meta{color:var(--mute);font-size:.8rem}
+.testimonial-card blockquote{color:var(--cream);font-size:.9rem;margin:0;padding-left:15px;border-left:2px solid var(--gold)}
+.parents{background:#103027;border:1px solid var(--line);border-radius:17px;padding:29px;margin-bottom:22px}
+.parents h2,.free-material h2{font-size:clamp(1.7rem,3vw,2.3rem);margin:8px 0 17px}
+.parents ul{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+.parents li{display:flex;gap:11px;font-size:.89rem}
+.parents li:before{content:"✓";color:var(--gold);font-weight:700}
+.free-material{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;padding:29px;border:1px solid var(--line);background:linear-gradient(140deg,#143d2e,#09241c);border-radius:17px;margin-bottom:36px}
+.free-material p{font-size:.84rem;margin:0}
+.free-form{display:flex;gap:9px}.free-form .input{min-width:0;flex:1}
+.free-form .btn{white-space:nowrap;padding:13px}
+.free-feedback{font-size:.76rem;color:#ffcabd;min-height:1.5em;margin-top:8px}
+.faq-section{background:#09231d;border-top:1px solid var(--line)}
+.faq-list{max-width:850px;display:grid;gap:10px}
+.faq-list details{background:#103027;border:1px solid #ffffff24;border-radius:12px;padding:0 20px}
+.faq-list details[open]{border-color:#dfba7460}
+.faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:17px 0;font-weight:600;font-size:.94rem}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary:after{content:"+";color:var(--gold);font-size:1.4rem}
+.faq-list details[open] summary:after{content:"−"}
+.faq-list details p{font-size:.86rem;margin:0 0 20px}
+.floating-wa{position:fixed;right:20px;bottom:20px;z-index:150;display:grid;place-items:center;width:57px;height:57px;border:2px solid var(--gold);border-radius:50%;background:#1b9165;color:white;box-shadow:0 8px 26px #0008;transition:transform .2s}
+.floating-wa:hover{transform:translateY(-3px)}
+.floating-wa svg{width:30px;height:30px;fill:currentColor}
+.footer-links{display:flex;flex-wrap:wrap;gap:15px;font-size:.84rem}
+.footer-links a{color:var(--gold);text-decoration:underline;text-underline-offset:4px}
+@media(max-width:800px){.free-material{grid-template-columns:1fr}}
+@media(max-width:620px){.hero-cta-group{flex-direction:column;align-items:stretch}.hero-cta-group .btn{width:100%}.free-form{flex-direction:column}.free-form .btn{width:100%}.floating-wa{right:15px;bottom:15px;width:53px;height:53px}.footer{padding-bottom:90px}}
+
 </style>
 </head>
 <body>
 <header class="header"><div class="wrap nav"><a class="logo" href="#inicio">GUSTAVO<span>.</span>SCHLICHTA</a><nav class="nav-links" aria-label="Navegação"><a href="#metodo">O método</a><a href="#materias">Matérias</a><a href="#sobre">Sobre mim</a><a class="nav-button" href="#diagnostico">Montar meu plano ↗</a></nav></div></header>
 <main>
-<section class="hero" id="inicio"><div class="wrap hero-inner"><div><span class="pill">AULAS ONLINE · ENSINO MÉDIO E SUPERIOR</span><h1>Aulas<br>Particulares<br>de <em>Exatas.</em></h1><p>Aprenda Cálculo, Física e Matemática com quem <strong>conquistou nota 10 nas disciplinas mais exigentes da Engenharia.</strong> Aulas práticas, explicações claras e um plano de estudos construído para suas dificuldades.</p><a class="btn" href="#diagnostico">Quero meu plano de estudos →</a><p class="signature" style="color:var(--gold);font-weight:700;margin:15px 0 0">Aulas individuais a partir de R$ 60/hora</p><p class="signature">Com <strong>Gustavo Schlichta</strong> · Engenharia Civil UTFPR</p></div><aside class="proof"><small>Desempenho acadêmico</small><div class="giant">10,0</div><p>Em Cálculo I e II, Álgebra Linear, Geometria Analítica, Equações Diferenciais e Física Teórica I.</p><div class="proofline"><b>01</b><span>1º colocado do curso · Coeficiente 0,9557</span></div><div class="proofline"><b>∑</b><span>Monitor de Cálculo I · UTFPR</span></div><div class="proofline"><b>JP</b><span>Intercâmbio no Shibaura Institute of Technology</span></div></aside></div></section>
+<section class="hero" id="inicio"><div class="wrap hero-inner"><div><span class="pill">AULAS ONLINE · ENSINO MÉDIO E SUPERIOR</span><h1>Aulas<br>Particulares<br>de <em>Exatas.</em></h1><p>Aprenda Cálculo, Física e Matemática com quem <strong>conquistou nota 10 nas disciplinas mais exigentes da Engenharia.</strong> Aulas práticas, explicações claras e um plano de estudos construído para suas dificuldades.</p><div class="hero-cta-group"><a class="btn" href="#diagnostico">Quero meu plano de estudos →</a><a class="btn alt" href="#" data-direct-wa target="_blank" rel="noopener noreferrer">Falar no WhatsApp ↗</a></div><p class="signature" style="color:var(--gold);font-weight:700;margin:15px 0 0">Aulas individuais a partir de R$ 60/hora</p><p class="signature">Com <strong>Gustavo Schlichta</strong> · Engenharia Civil UTFPR</p></div><aside class="proof"><small>Desempenho acadêmico</small><div class="giant">10,0</div><p>Em Cálculo I e II, Álgebra Linear, Geometria Analítica, Equações Diferenciais e Física Teórica I.</p><div class="proofline"><b>01</b><span>1º colocado do curso · Coeficiente 0,9557</span></div><div class="proofline"><b>∑</b><span>Monitor de Cálculo I · UTFPR</span></div><div class="proofline"><b>JP</b><span>Intercâmbio no Shibaura Institute of Technology</span></div></aside></div></section>
 <section class="trust"><div class="wrap trust-grid"><div><strong>100% online</strong><span>Aulas ao vivo</span></div><div><strong>1 hora</strong><span>Por encontro</span></div><div><strong>Individual</strong><span>Plano personalizado</span></div><div><strong>Do básico ao avançado</strong><span>Ensino médio e superior</span></div></div></section>
 <section class="section" id="metodo"><div class="wrap"><span class="tag">O método</span><h2>Não é apenas assistir.<br>É <em>entender de verdade.</em></h2><p class="lead">Cada aluno tem uma base, um ritmo e um objetivo diferentes. As aulas são planejadas a partir do que você realmente precisa aprender.</p><div class="cards">
 <article class="card"><span class="symbol">◷</span><h3>Online e ao vivo</h3><p>Encontros individuais de 1 hora, com explicações em tempo real e espaço para perguntas.</p></article>
 <article class="card"><span class="symbol">◎</span><h3>Foco nas suas dificuldades</h3><p>Conteúdo baseado nas suas listas, provas anteriores e tópicos mais difíceis.</p></article>
 <article class="card"><span class="symbol">≡</span><h3>Material de apoio</h3><p>Resumo após cada encontro e materiais para continuar estudando.</p></article>
-<article class="card"><span class="symbol">↗</span><h3>Acompanhamento</h3><p>Suporte entre as aulas para dúvidas pontuais e orientação.</p></article>
+<article class="card"><span class="symbol">↗</span><h3>Acompanhamento</h3><p>Suporte entre as aulas para dúvidas pontuais e orientação, com resposta em até [TEMPO_RESPOSTA] horas em dias úteis.</p></article>
 <article class="card"><span class="symbol">⌁</span><h3>Plano personalizado</h3><p>Conteúdos prioritários e frequência sugerida até a próxima prova.</p></article>
 <article class="card"><span class="symbol">✓</span><h3>Teoria aplicada</h3><p>Explicações objetivas, exemplos resolvidos e exercícios progressivos.</p></article>
-</div><div class="price"><div><strong>Investimento nas aulas</strong><p>Valores individuais e pacotes a combinar pelo WhatsApp.</p></div><b id="price"></b></div></div></section>
+</div><div class="price"><div><strong>Investimento nas aulas</strong><p>Valores individuais e pacotes a combinar pelo WhatsApp.</p></div><div class="price-details"><b id="price"></b><div class="monthly">Pacote mensal: <b>[PREÇO_PACOTE]</b></div><p class="payment">Pagamento via Pix (outras formas, a combinar).</p></div></div><div class="first-lesson"><span class="seal" aria-hidden="true">✓</span><div><h3>Primeira aula sem risco</h3><p>A primeira aula é experimental. Se você sentir que o formato não é para você, não continua e não há cobrança de pacote nem compromisso. O risco é meu, não seu.</p></div></div></div></section>
 <section class="paths" id="trilhas"><div class="wrap">
 <span class="tag">Escolha sua trilha</span><h2>Uma preparação para <em>cada etapa.</em></h2>
 <p class="lead">Ensino médio, graduação em Exatas ou disciplinas específicas de Engenharia Civil. Selecione a trilha para conhecer as matérias e resultados relacionados.</p>
@@ -173,6 +217,9 @@
 </div>
 </section>
 
+<section class="section testimonials" id="depoimentos"><div class="wrap"><span class="tag">Depoimentos</span><h2>O que dizem <em>os alunos.</em></h2><p class="lead">Espaço reservado para experiências reais dos alunos.</p><div class="cards"><article class="card testimonial-card"><h3>Nome: [NOME A PREENCHER]</h3><div class="testimonial-meta">Matéria: [MATÉRIA A PREENCHER]<br>Objetivo: [OBJETIVO A PREENCHER]</div><blockquote>[DEPOIMENTO A PREENCHER]</blockquote></article>
+<article class="card testimonial-card"><h3>Nome: [NOME A PREENCHER]</h3><div class="testimonial-meta">Matéria: [MATÉRIA A PREENCHER]<br>Objetivo: [OBJETIVO A PREENCHER]</div><blockquote>[DEPOIMENTO A PREENCHER]</blockquote></article>
+<article class="card testimonial-card"><h3>Nome: [NOME A PREENCHER]</h3><div class="testimonial-meta">Matéria: [MATÉRIA A PREENCHER]<br>Objetivo: [OBJETIVO A PREENCHER]</div><blockquote>[DEPOIMENTO A PREENCHER]</blockquote></article></div></div></section>
 <section class="section" id="sobre"><div class="wrap about-grid"><div class="portrait"><img class="portrait-photo" src="assets/perfil-gustavo-novo.jpg?v=20261104-final" onerror="this.onerror=null;this.src='assets/perfil-gustavo.jpg'" width="175" height="220" alt="Gustavo Schlichta com camisa branca e gravata na Shibaura Institute of Technology" loading="eager" decoding="async"><h3>Gustavo Schlichta</h3><p>Engenharia Civil · UTFPR<br>Intercâmbio acadêmico · Japão</p></div><div><span class="tag">Quem dá a aula</span><h2>Ensino baseado em <em>experiência e resultados.</em></h2><p>Sou estudante de Engenharia Civil da UTFPR, atualmente no 7º período e em intercâmbio acadêmico no Shibaura Institute of Technology, no Japão. Minha proposta é ajudar você a compreender a lógica dos exercícios, em vez de apenas memorizar fórmulas.</p><div class="credentials">
 <div><span class="tick">✓</span><span>Engenharia Civil na UTFPR — 7º período.</span></div>
 <div><span class="tick">✓</span><span>Intercâmbio acadêmico no Shibaura Institute of Technology, Japão.</span></div>
